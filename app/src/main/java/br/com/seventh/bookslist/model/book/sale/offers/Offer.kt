@@ -1,8 +1,14 @@
 package br.com.seventh.bookslist.model.book.sale.offers
 
+import com.google.gson.annotations.SerializedName
+
 data class Offer(
-    var finskyOfferType: Int,
-    var listPrice: MutableList<ListPrice>,
-    var retailPrice: MutableList<RetailPrice>,
-    var giftable: Boolean
+    @SerializedName("finskyOfferType")
+    var finskyOfferType: Int?,
+    @SerializedName("listPrice")
+    var listPrice: MutableList<ListPrice>?,
+    @SerializedName("retailPrice")
+    var retailPrice: MutableList<RetailPrice>?,
+    @SerializedName("giftable")
+    var giftable: Boolean?
 )

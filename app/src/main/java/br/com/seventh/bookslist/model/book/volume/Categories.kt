@@ -1,6 +1,9 @@
 package br.com.seventh.bookslist.model.book.volume
 
+import com.google.gson.annotations.SerializedName
+
 /* This is in VolumeInfo */
 data class Categories(
-    var Religion: String
+    @SerializedName("Religion")
+    var Religion: String?
 )

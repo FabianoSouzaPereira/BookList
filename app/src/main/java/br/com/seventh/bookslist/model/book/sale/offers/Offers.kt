@@ -1,6 +1,9 @@
 package br.com.seventh.bookslist.model.book.sale.offers
 
+import com.google.gson.annotations.SerializedName
+
 
 data class Offers(
-    val offers: MutableList<Offer>
+    @SerializedName("offers")
+    val offers: MutableList<Offer>?
 )

@@ -1,23 +1,24 @@
 package br.com.seventh.bookslist.model.book.access
 
+import com.google.gson.annotations.SerializedName
+
 data class AccessInfo (
-    var country: String,
-    var viewability: String,
-    var embeddable: Boolean,
-    var publicDomain: Boolean,
-    var textToSpeechPermission: String,
-    var epub: Epub
+    @SerializedName("country")
+    var country: String?,
+    @SerializedName("viewability")
+    var viewability: String?,
+    @SerializedName("embeddable")
+    var embeddable: Boolean?,
+    @SerializedName("publicDomain")
+    var publicDomain: Boolean?,
+    @SerializedName("textToSpeechPermission")
+    var textToSpeechPermission: String?,
+    @SerializedName("epub")
+    var epub: Epub?,
+    @SerializedName("pdf")
+    var pdf: Pdf?
 )
 
-    data class Epub(
-        var isAvailable: Boolean,
-        var acsTokenLink: String,
-        var webReaderLink: String,
-        var accessViewStatus: String,
-        var quoteSharingAllowed: Boolean
-    )
 
-    data class pdf(
-        var isAvailable: Boolean,
-        var acsTokenLink: String
-    )
+
+

@@ -1,31 +1,54 @@
 package br.com.seventh.bookslist.model.book.volume
 
 import br.com.seventh.bookslist.model.book.volume.*
+import com.google.gson.annotations.SerializedName
 
 /* This is in Book */
 class VolumeInfo (
-    var title: String,
-    var subtitle: String,
-    var authors: Authors,
-    var publisher: String,
-    var publishedDate: String,
-    var description: String,
-    var industryIdentifiers: MutableList<IndustryIdentifiers>,
-    var readingModes: ReadingModes,
-    var pageCount: Int,
-    var printType: String,
-    var categories: MutableList<Categories>,
-    var maturityRating: String,
-    var allowAnonLogging: Boolean,
-    var contentVersion: String,
-    var panelizationSummary: PanelizationSummary,
-    var containsEpubBubbles: Boolean,
-    var containsImageBubbles: Boolean,
-    var imageLinks: ImageLinks,
-    var language: String,
-    var previewLink: String,
-    var infoLink: String,
-    var canonicalVolumeLink: String,
+    @SerializedName("title")
+    var title: String?,
+    @SerializedName("subtitle")
+    var subtitle: String?,
+    @SerializedName("authors")
+    var authors: Authors?,
+    @SerializedName("publisher")
+    var publisher: String?,
+    @SerializedName("publishedDate")
+    var publishedDate: String?,
+    @SerializedName("description")
+    var description: String?,
+    @SerializedName("ndustryIdentifiers")
+    var industryIdentifiers: MutableList<IndustryIdentifiers>?,
+    @SerializedName("readingModes")
+    var readingModes: ReadingModes?,
+    @SerializedName("pageCount")
+    var pageCount: Int?,
+    @SerializedName("printType")
+    var printType: String?,
+    @SerializedName("categories")
+    var categories: MutableList<Categories>?,
+    @SerializedName("maturityRating")
+    var maturityRating: String?,
+    @SerializedName("allowAnonLogging")
+    var allowAnonLogging: Boolean?,
+    @SerializedName("contentVersion")
+    var contentVersion: String?,
+    @SerializedName("panelizationSummary")
+    var panelizationSummary: PanelizationSummary?,
+    @SerializedName("containsEpubBubbles")
+    var containsEpubBubbles: Boolean?,
+    @SerializedName("containsImageBubbles")
+    var containsImageBubbles: Boolean?,
+    @SerializedName("imageLinks")
+    var imageLinks: ImageLinks?,
+    @SerializedName("language")
+    var language: String?,
+    @SerializedName("reviewLink")
+    var previewLink: String?,
+    @SerializedName("infoLink")
+    var infoLink: String?,
+    @SerializedName("canonicalVolumeLink")
+    var canonicalVolumeLink: String?,
 )
 
 
