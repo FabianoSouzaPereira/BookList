@@ -6,9 +6,9 @@ data class Offer(
     @SerializedName("finskyOfferType")
     var finskyOfferType: Int?,
     @SerializedName("listPrice")
-    var listPrice: MutableList<ListPrice>?,
+    var listPrice: ListPrice?,
     @SerializedName("retailPrice")
-    var retailPrice: MutableList<RetailPrice>?,
+    var retailPrice: RetailPrice?,
     @SerializedName("giftable")
     var giftable: Boolean?
 )

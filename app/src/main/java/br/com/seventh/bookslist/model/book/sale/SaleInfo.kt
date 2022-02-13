@@ -1,7 +1,7 @@
 package br.com.seventh.bookslist.model.book.sale
 
 import br.com.seventh.bookslist.model.book.sale.offers.ListPrice
-import br.com.seventh.bookslist.model.book.sale.offers.Offers
+import br.com.seventh.bookslist.model.book.sale.offers.Offer
 import br.com.seventh.bookslist.model.book.sale.offers.RetailPrice
 import com.google.gson.annotations.SerializedName
 
@@ -19,7 +19,7 @@ data class SaleInfo(
     @SerializedName("buyLink")
     var buyLink: String?,
     @SerializedName("offers")
-    var offers: Offers?,
+    var offers: MutableList<Offer>,
 )
 
 

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import br.com.seventh.bookslist.api.ApiClient
 import br.com.seventh.bookslist.databinding.FragmentHomeBinding
+import br.com.seventh.bookslist.utils.Shared
 
 class HomeFragment : Fragment() {
 
@@ -35,6 +36,7 @@ class HomeFragment : Fragment() {
         ApiClient().getBook(requireContext(),"Dicionário do Espírito Santo",
             {
             val response = it
+                Shared.instance.booksList = it
             },
             {
                 Toast.makeText(requireContext(), "ApiClient().getBook(...) falhou!!", Toast.LENGTH_SHORT).show()

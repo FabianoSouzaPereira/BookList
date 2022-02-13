@@ -4,13 +4,13 @@ import br.com.seventh.bookslist.model.book.volume.*
 import com.google.gson.annotations.SerializedName
 
 /* This is in Book */
-class VolumeInfo (
+data class VolumeInfo (
     @SerializedName("title")
     var title: String?,
     @SerializedName("subtitle")
     var subtitle: String?,
     @SerializedName("authors")
-    var authors: Authors?,
+    var authors: MutableList<String>?,
     @SerializedName("publisher")
     var publisher: String?,
     @SerializedName("publishedDate")
@@ -26,7 +26,7 @@ class VolumeInfo (
     @SerializedName("printType")
     var printType: String?,
     @SerializedName("categories")
-    var categories: MutableList<Categories>?,
+    var categories: MutableList<String>?,
     @SerializedName("maturityRating")
     var maturityRating: String?,
     @SerializedName("allowAnonLogging")
