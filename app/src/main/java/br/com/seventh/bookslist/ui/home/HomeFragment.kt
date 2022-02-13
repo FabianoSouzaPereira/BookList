@@ -8,14 +8,26 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import br.com.seventh.bookslist.BooksListAdapter
+import br.com.seventh.bookslist.R
 import br.com.seventh.bookslist.api.ApiClient
 import br.com.seventh.bookslist.databinding.FragmentHomeBinding
+import br.com.seventh.bookslist.model.book.Book
+import br.com.seventh.bookslist.model.book.Item
 import br.com.seventh.bookslist.utils.Shared
 
 class HomeFragment : Fragment() {
-
+    companion object {
+        @JvmStatic
+        fun newInstance() = HomeFragment()
+    }
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var booksAdapter: BooksListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,22 +39,49 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        recyclerView = root.findViewById(R.id.recyclerViewBooks)
 
         val textView: TextView = binding.textHome
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
 
+        getBooks()
+        
+        return root
+    }
+
+    fun getBooks(){
         ApiClient().getBook(requireContext(),"Dicionário do Espírito Santo",
             {
-            val response = it
+                val response = it
                 Shared.instance.booksList = it
+                for(item in response.items!!){
+                   Shared.instance.list.add(item)
+                }
+                initializeAdapter(Shared.instance.list)
             },
             {
                 Toast.makeText(requireContext(), "ApiClient().getBook(...) falhou!!", Toast.LENGTH_SHORT).show()
             }
         )
-        return root
+    }
+
+    fun initializeAdapter(newData: MutableList<Item>) {
+
+        recyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+
+        booksAdapter = BooksListAdapter(requireContext()) { }
+
+        recyclerView.adapter = booksAdapter
+        recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                DividerItemDecoration.VERTICAL
+            )
+        )
+        booksAdapter.setData(newData)
     }
 
     override fun onDestroyView() {
