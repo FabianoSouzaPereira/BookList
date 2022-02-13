@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import br.com.seventh.bookslist.api.ApiClient
 import br.com.seventh.bookslist.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -32,6 +34,15 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+
+        ApiClient().getBook(requireContext(),"Dicionário do Espírito Santo",
+            {
+            val response = it
+            },
+            {
+                Toast.makeText(requireContext(), "ApiClient().getBook(...) falhou!!", Toast.LENGTH_SHORT).show()
+            }
+        )
         return root
     }
 
